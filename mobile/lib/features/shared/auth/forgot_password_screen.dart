@@ -41,7 +41,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 8),
-                  Text(
+                  const Text(
                     'Vérifiez votre email ou SMS pour réinitialiser votre mot de passe.',
                     textAlign: TextAlign.center,
                     style: TextStyle(color: AppColors.darkGray),

@@ -64,7 +64,7 @@ class BookValidationScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   Text(book.summary),
-                  Text('Source : ${book.source}', style: TextStyle(fontSize: 12, color: AppColors.darkGray)),
+                  Text('Source : ${book.source}', style: const TextStyle(fontSize: 12, color: AppColors.darkGray)),
                   const SizedBox(height: 16),
                   Row(
                     children: [

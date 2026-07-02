@@ -35,9 +35,9 @@ class _OfflineClassroomScreenState extends State<OfflineClassroomScreen> {
                       ],
                     ),
                   )
-                : Card(
+                : const Card(
                     color: AppColors.lightGray,
-                    child: const Padding(
+                    child: Padding(
                       padding: EdgeInsets.all(20),
                       child: Text('Démarrez le serveur local pour distribuer des packs sans Internet.'),
                     ),
@@ -52,10 +52,10 @@ class _OfflineClassroomScreenState extends State<OfflineClassroomScreen> {
                   onTap: () {},
                 ),
               ),
-              Card(
+              const Card(
                 child: ListTile(
-                  leading: const Icon(Icons.tag, color: AppColors.emeraldGreen),
-                  title: const Text('Code classe : MBOA-TD24'),
+                  leading: Icon(Icons.tag, color: AppColors.emeraldGreen),
+                  title: Text('Code classe : MBOA-TD24'),
                 ),
               ),
               SectionHeader(title: 'Appareils connectés (${_connectedDevices.length})'),
@@ -69,7 +69,7 @@ class _OfflineClassroomScreenState extends State<OfflineClassroomScreen> {
               const SectionHeader(title: 'Transferts en cours'),
               const LinearProgressIndicator(value: 0.65),
               const SizedBox(height: 8),
-              Text('Pack Maths — 65 %', style: TextStyle(color: AppColors.darkGray)),
+              const Text('Pack Maths — 65 %', style: TextStyle(color: AppColors.darkGray)),
             ],
             const SizedBox(height: 24),
             FilledButton.icon(

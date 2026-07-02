@@ -69,9 +69,9 @@ class ChaptersScreen extends StatelessWidget {
                       ),
                     ),
                   if (ch.isLocked)
-                    Text(
+                    const Text(
                       'Score ≥ ${AppConstants.chapterUnlockScore} % requis',
-                      style: const TextStyle(color: AppColors.errorRed, fontSize: 12),
+                      style: TextStyle(color: AppColors.errorRed, fontSize: 12),
                     ),
                   if (!ch.isLocked && !ch.isCompleted)
                     Padding(

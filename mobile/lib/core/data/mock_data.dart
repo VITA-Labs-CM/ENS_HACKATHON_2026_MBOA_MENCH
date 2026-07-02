@@ -227,7 +227,7 @@ abstract final class MockData {
   ];
 
   static final eduPacks = [
-    EduPack(
+    const EduPack(
       id: 'pack-1',
       name: 'Pack Maths Terminale D',
       subject: 'Mathématiques',
@@ -236,7 +236,7 @@ abstract final class MockData {
       stage: PackDownloadStage.completed,
       progress: 1.0,
     ),
-    EduPack(
+    const EduPack(
       id: 'pack-2',
       name: 'Pack Physique Proba',
       subject: 'Physique',
@@ -246,7 +246,7 @@ abstract final class MockData {
       progress: 0.45,
       downloadSpeedKbps: 128,
     ),
-    EduPack(
+    const EduPack(
       id: 'pack-3',
       name: 'Pack Français 3e BEPC',
       subject: 'Français',
@@ -258,7 +258,7 @@ abstract final class MockData {
   ];
 
   static final aiModels = [
-    AiModel(
+    const AiModel(
       id: 'emb-1',
       name: 'Embeddings APC (quantifié)',
       sizeMb: 45,
@@ -267,7 +267,7 @@ abstract final class MockData {
       progress: 1.0,
       isInstalled: true,
     ),
-    AiModel(
+    const AiModel(
       id: 'llm-1',
       name: 'Phi-3 Mini (4K context)',
       sizeMb: 2100,
@@ -276,7 +276,7 @@ abstract final class MockData {
       progress: 0.32,
       downloadSpeedKbps: 95,
     ),
-    AiModel(
+    const AiModel(
       id: 'llm-2',
       name: 'Gemma 2B (quantifié)',
       sizeMb: 1500,

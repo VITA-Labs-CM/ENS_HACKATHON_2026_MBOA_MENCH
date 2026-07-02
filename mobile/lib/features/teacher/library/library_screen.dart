@@ -12,8 +12,8 @@ class LibraryScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Bibliothèque')),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
+          const Padding(
+            padding: EdgeInsets.all(16),
             child: SearchField(hint: 'Rechercher un ouvrage...'),
           ),
           SingleChildScrollView(

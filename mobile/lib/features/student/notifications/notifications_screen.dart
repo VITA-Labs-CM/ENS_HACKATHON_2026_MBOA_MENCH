@@ -44,7 +44,7 @@ class NotificationsScreen extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   DateFormat('dd MMM, HH:mm', 'fr').format(n.timestamp),
-                  style: TextStyle(fontSize: 12, color: AppColors.darkGray),
+                  style: const TextStyle(fontSize: 12, color: AppColors.darkGray),
                 ),
               ],
             ),

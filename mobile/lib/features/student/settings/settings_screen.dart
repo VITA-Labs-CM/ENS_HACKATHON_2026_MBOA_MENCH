@@ -95,7 +95,7 @@ class _SectionTitle extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           color: AppColors.electricBlue,
           fontWeight: FontWeight.bold,
           fontSize: 13,

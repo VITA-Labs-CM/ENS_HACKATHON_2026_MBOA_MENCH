@@ -20,7 +20,6 @@ class _QuizScreenState extends State<QuizScreen> {
   int _currentIndex = 0;
   int _score = 0;
   String? _selectedAnswer;
-  String _shortAnswer = '';
   bool _showResult = false;
   bool _finished = false;
   int _secondsLeft = 300;
@@ -151,7 +150,7 @@ class _QuizScreenState extends State<QuizScreen> {
           children: [
             ProgressBar(progress: progress, label: 'Progression'),
             const SizedBox(height: 8),
-            Text('Score actuel : $_score', style: TextStyle(color: AppColors.darkGray)),
+            Text('Score actuel : $_score', style: const TextStyle(color: AppColors.darkGray)),
             const SizedBox(height: 24),
             Text(
               q.question,
@@ -191,30 +190,36 @@ class _QuizScreenState extends State<QuizScreen> {
       );
     }
 
-    return ListView(
-      children: q.options.map((opt) {
-        final isSelected = _selectedAnswer == opt;
-        final isCorrect = opt == q.correctAnswer;
-        Color? tileColor;
-        if (_showResult) {
-          if (isCorrect) tileColor = AppColors.emeraldGreen.withValues(alpha: 0.15);
-          else if (isSelected) tileColor = AppColors.errorRed.withValues(alpha: 0.15);
-        }
+    return RadioGroup<String>(
+      groupValue: _selectedAnswer,
+      onChanged: (v) {
+        if (_showResult) return;
+        setState(() => _selectedAnswer = v);
+      },
+      child: ListView(
+        children: q.options.map((opt) {
+          final isSelected = _selectedAnswer == opt;
+          final isCorrect = opt == q.correctAnswer;
+          Color? tileColor;
+          if (_showResult) {
+            if (isCorrect) {
+              tileColor = AppColors.emeraldGreen.withValues(alpha: 0.15);
+            } else if (isSelected) {
+              tileColor = AppColors.errorRed.withValues(alpha: 0.15);
+            }
+          }
 
-        return Card(
-          color: tileColor,
-          margin: const EdgeInsets.only(bottom: 8),
-          child: ListTile(
-            title: Text(opt),
-            leading: Radio<String>(
-              value: opt,
-              groupValue: _selectedAnswer,
-              onChanged: _showResult ? null : (v) => setState(() => _selectedAnswer = v),
+          return Card(
+            color: tileColor,
+            margin: const EdgeInsets.only(bottom: 8),
+            child: ListTile(
+              title: Text(opt),
+              leading: Radio<String>(value: opt),
+              onTap: _showResult ? null : () => setState(() => _selectedAnswer = opt),
             ),
-            onTap: _showResult ? null : () => setState(() => _selectedAnswer = opt),
-          ),
-        );
-      }).toList(),
+          );
+        }).toList(),
+      ),
     );
   }
 }

@@ -73,7 +73,7 @@ class AiModelDownloadScreen extends StatelessWidget {
                             Text(model.name, style: const TextStyle(fontWeight: FontWeight.bold)),
                             Text(
                               '${model.sizeMb.round()} Mo • RAM min. ${model.ramRequiredMb} Mo',
-                              style: TextStyle(fontSize: 13, color: AppColors.darkGray),
+                              style: const TextStyle(fontSize: 13, color: AppColors.darkGray),
                             ),
                           ],
                         ),
@@ -83,7 +83,7 @@ class AiModelDownloadScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 12),
-                  Text(_stageLabel(model.stage), style: TextStyle(color: AppColors.darkGray)),
+                  Text(_stageLabel(model.stage), style: const TextStyle(color: AppColors.darkGray)),
                   if (model.stage != ModelDownloadStage.idle &&
                       model.stage != ModelDownloadStage.completed) ...[
                     const SizedBox(height: 12),
@@ -93,7 +93,7 @@ class AiModelDownloadScreen extends StatelessWidget {
                     if (model.downloadSpeedKbps != null)
                       Text(
                         '${model.downloadSpeedKbps!.round()} Ko/s',
-                        style: TextStyle(fontSize: 12, color: AppColors.darkGray),
+                        style: const TextStyle(fontSize: 12, color: AppColors.darkGray),
                       ),
                   ],
                   const SizedBox(height: 12),

@@ -36,7 +36,9 @@ class TeacherShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isWide = MediaQuery.sizeOf(context).width >= 900;
+    final width = MediaQuery.sizeOf(context).width;
+    final isWide = width >= 900;
+    final isExtended = width >= 1200;
 
     return Scaffold(
       drawer: isWide ? null : _buildDrawer(context),
@@ -44,10 +46,12 @@ class TeacherShell extends StatelessWidget {
         children: [
           if (isWide)
             NavigationRail(
-              extended: MediaQuery.sizeOf(context).width >= 1200,
+              extended: isExtended,
               selectedIndex: navigationShell.currentIndex,
               onDestinationSelected: navigationShell.goBranch,
-              labelType: NavigationRailLabelType.all,
+              labelType: isExtended
+                  ? NavigationRailLabelType.none
+                  : NavigationRailLabelType.all,
               destinations: _tabs
                   .map((t) => NavigationRailDestination(
                         icon: Icon(t.icon),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/shared_widgets.dart';
 
 /// Génération d'épreuves — quiz, devoirs, examens.
@@ -16,7 +15,7 @@ class ExamGeneratorScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             DropdownButtonFormField<String>(
-              value: 'Quiz interactif',
+              initialValue: 'Quiz interactif',
               decoration: const InputDecoration(labelText: 'Type d\'épreuve'),
               items: ['Quiz interactif', 'Devoir', 'Examen', 'Sujet PDF', 'Document Word']
                   .map((t) => DropdownMenuItem(value: t, child: Text(t)))
@@ -25,7 +24,7 @@ class ExamGeneratorScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             DropdownButtonFormField<String>(
-              value: 'Moyen',
+              initialValue: 'Moyen',
               decoration: const InputDecoration(labelText: 'Difficulté'),
               items: ['Facile', 'Moyen', 'Difficile']
                   .map((d) => DropdownMenuItem(value: d, child: Text(d)))

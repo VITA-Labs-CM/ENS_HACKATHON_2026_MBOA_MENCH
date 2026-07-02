@@ -15,13 +15,13 @@ class VideoManagementScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          _VideoCard(
+          const _VideoCard(
             title: 'Introduction aux nombres complexes',
             duration: '12:34',
             views: 42,
             progress: 0.78,
           ),
-          _VideoCard(
+          const _VideoCard(
             title: 'Suites arithmétiques — Méthode',
             duration: '18:20',
             views: 28,
@@ -69,9 +69,9 @@ class _VideoCard extends StatelessWidget {
         children: [
           Container(
             height: 140,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColors.darkBg,
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
             ),
             child: const Center(
               child: Icon(Icons.play_circle_fill, size: 56, color: Colors.white54),

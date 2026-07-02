@@ -17,6 +17,8 @@ abstract final class AppConstants {
   static const themeModeKey = 'theme_mode';
   static const userRoleKey = 'user_role';
   static const sessionKey = 'user_session';
+  static const userIdKey = 'user_id';
+  static const lastUserIdKey = 'last_user_id';
 }
 
 /// Rôles utilisateur supportés par l'application.

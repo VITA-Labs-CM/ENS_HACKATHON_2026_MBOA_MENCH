@@ -40,7 +40,7 @@ class TeacherCoursesScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 8),
-                  Text(c.description, style: TextStyle(color: AppColors.darkGray)),
+                  Text(c.description, style: const TextStyle(color: AppColors.darkGray)),
                   const SizedBox(height: 8),
                   Text('${c.subject} • ${c.chapter} • ${c.durationMinutes} min'),
                   Wrap(

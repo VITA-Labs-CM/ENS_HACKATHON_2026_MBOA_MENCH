@@ -29,8 +29,8 @@ class StudentsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
+          const Padding(
+            padding: EdgeInsets.all(16),
             child: SearchField(hint: 'Rechercher un élève...'),
           ),
           Expanded(
@@ -85,7 +85,7 @@ class _Stat extends StatelessWidget {
     return Column(
       children: [
         Text(value, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-        Text(label, style: TextStyle(fontSize: 12, color: AppColors.darkGray)),
+        Text(label, style: const TextStyle(fontSize: 12, color: AppColors.darkGray)),
       ],
     );
   }

@@ -4,17 +4,25 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/providers/app_providers.dart';
+import 'core/providers/account_providers.dart';
+import 'core/services/auth/account_database.dart';
+import 'core/services/database/database_init.dart';
 import 'core/constants/app_constants.dart';
 
 /// Point d'entrée de MBOA MENCH.
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeSqflite();
   final prefs = await SharedPreferences.getInstance();
+
+  final accountDb = AccountDatabase();
+  await accountDb.initialize();
 
   runApp(
     ProviderScope(
       overrides: [
         sharedPreferencesProvider.overrideWithValue(prefs),
+        accountDatabaseProvider.overrideWithValue(accountDb),
       ],
       child: const MboaMenchApp(),
     ),

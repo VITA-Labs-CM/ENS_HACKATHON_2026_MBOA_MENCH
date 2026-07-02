@@ -43,7 +43,7 @@ class _AiContentScreenState extends State<AiContentScreen> {
             const Text('Paramètres', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
             const SizedBox(height: 12),
             DropdownButtonFormField<String>(
-              value: 'Terminale',
+              initialValue: 'Terminale',
               decoration: const InputDecoration(labelText: 'Niveau'),
               items: ['3e', 'Probatoire', 'Terminale']
                   .map((l) => DropdownMenuItem(value: l, child: Text(l)))
@@ -52,7 +52,7 @@ class _AiContentScreenState extends State<AiContentScreen> {
             ),
             const SizedBox(height: 12),
             DropdownButtonFormField<String>(
-              value: 'Mathématiques',
+              initialValue: 'Mathématiques',
               decoration: const InputDecoration(labelText: 'Matière'),
               items: ['Mathématiques', 'Physique', 'Français']
                   .map((m) => DropdownMenuItem(value: m, child: Text(m)))
@@ -68,7 +68,7 @@ class _AiContentScreenState extends State<AiContentScreen> {
             ),
             const SizedBox(height: 12),
             DropdownButtonFormField<String>(
-              value: _contentType,
+              initialValue: _contentType,
               decoration: const InputDecoration(labelText: 'Type de contenu'),
               items: ['Cours', 'Résumé', 'Fiche', 'Exercices', 'Quiz', 'Devoir', 'Épreuve', 'Corrigé']
                   .map((t) => DropdownMenuItem(value: t, child: Text(t)))

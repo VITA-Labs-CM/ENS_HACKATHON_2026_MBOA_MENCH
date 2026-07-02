@@ -128,7 +128,7 @@ class _InfoChip extends StatelessWidget {
       children: [
         Icon(icon, size: 16, color: AppColors.electricBlue),
         const SizedBox(width: 4),
-        Text(label, style: TextStyle(fontSize: 13, color: AppColors.darkGray)),
+        Text(label, style: const TextStyle(fontSize: 13, color: AppColors.darkGray)),
       ],
     );
   }

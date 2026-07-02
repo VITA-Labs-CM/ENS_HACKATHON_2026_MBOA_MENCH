@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../../core/data/mock_data.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../core/widgets/shared_widgets.dart';
 
 /// Détail d'une classe — code, QR, actions.
 class ClassDetailScreen extends StatelessWidget {
@@ -35,7 +34,7 @@ class ClassDetailScreen extends StatelessWidget {
                       child: const Icon(Icons.qr_code_2, size: 80, color: AppColors.electricBlue),
                     ),
                     const SizedBox(height: 16),
-                    Text('Code d\'invitation', style: TextStyle(color: AppColors.darkGray)),
+                    const Text('Code d\'invitation', style: TextStyle(color: AppColors.darkGray)),
                     const SizedBox(height: 8),
                     SelectableText(
                       cls.inviteCode,

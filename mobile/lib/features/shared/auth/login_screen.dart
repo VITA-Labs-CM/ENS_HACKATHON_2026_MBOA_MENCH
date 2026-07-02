@@ -3,10 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/providers/app_providers.dart';
+import '../../../core/providers/account_providers.dart';
+import '../../../core/services/auth/account_repository.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/shared_widgets.dart';
 
-/// Écran de connexion avec validation de formulaire.
+/// Écran de connexion — authentification SQLite.
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key, required this.role});
 
@@ -22,15 +24,42 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _passwordController = TextEditingController();
   bool _isLoading = false;
   bool _obscure = true;
+  String? _error;
 
   Future<void> _login() async {
     if (!_formKey.currentState!.validate()) return;
-    setState(() => _isLoading = true);
-    await Future.delayed(const Duration(milliseconds: 1200));
-    final name = widget.role == UserRole.student ? 'Amina Ndjock' : 'Prof. Jean-Baptiste Mballa';
-    await ref.read(sessionProvider.notifier).login(name: name, role: widget.role);
-    if (mounted) {
-      context.go(widget.role == UserRole.teacher ? '/teacher' : '/student/home');
+    setState(() {
+      _isLoading = true;
+      _error = null;
+    });
+
+    try {
+      final account = await ref.read(accountRepositoryProvider).login(
+            identifier: _identifierController.text,
+            password: _passwordController.text,
+          );
+
+      if (account.role != widget.role) {
+        throw AccountException(
+          widget.role == UserRole.teacher
+              ? 'Ce compte est enregistré comme élève.'
+              : 'Ce compte est enregistré comme enseignant.',
+        );
+      }
+
+      await ref.read(sessionProvider.notifier).loginFromAccount(
+            userId: account.id,
+            name: account.name,
+            role: account.role,
+          );
+
+      if (mounted) {
+        context.go(widget.role == UserRole.teacher ? '/teacher' : '/student/home');
+      }
+    } on AccountException catch (e) {
+      if (mounted) setState(() => _error = e.message);
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
     }
   }
 
@@ -61,7 +90,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     ),
               ),
               const SizedBox(height: 8),
-              Text(
+              const Text(
                 'Connectez-vous avec votre email ou téléphone',
                 style: TextStyle(color: AppColors.darkGray),
               ),
@@ -91,6 +120,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 validator: (v) =>
                     v == null || v.length < 6 ? 'Minimum 6 caractères' : null,
               ),
+              if (_error != null) ...[
+                const SizedBox(height: 12),
+                Text(_error!, style: const TextStyle(color: AppColors.errorRed)),
+              ],
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
