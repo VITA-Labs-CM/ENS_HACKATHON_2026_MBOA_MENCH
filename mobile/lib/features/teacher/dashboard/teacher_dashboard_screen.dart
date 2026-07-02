@@ -114,7 +114,7 @@ class TeacherDashboardScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-            const SectionHeader(title: 'Activités récentes', actionLabel: 'Voir tout', onAction: () {}),
+           SectionHeader(title: 'Activités récentes', actionLabel: 'Voir tout', onAction: () {}),
             ...MockData.recentActivities.map((a) => Card(
                   margin: const EdgeInsets.only(bottom: 8),
                   child: ListTile(

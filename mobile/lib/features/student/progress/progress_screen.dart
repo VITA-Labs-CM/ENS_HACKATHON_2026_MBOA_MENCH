@@ -42,7 +42,7 @@ class ProgressScreen extends StatelessWidget {
                     BarChartData(
                       alignment: BarChartAlignment.spaceAround,
                       maxY: 300,
-                      barTouchData: const BarTouchData(enabled: false),
+                      barTouchData: BarTouchData(enabled: false),
                       titlesData: FlTitlesData(
                         bottomTitles: AxisTitles(
                           sideTitles: SideTitles(

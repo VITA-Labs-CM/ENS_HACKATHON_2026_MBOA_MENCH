@@ -112,7 +112,7 @@ class SessionNotifier extends StateNotifier<SessionState> {
   Future<void> logout() async {
     await _prefs.remove(AppConstants.sessionKey);
     await _prefs.remove(AppConstants.userRoleKey);
-    state = const SessionState(onboardingCompleted: state.onboardingCompleted);
+    state = SessionState(onboardingCompleted: state.onboardingCompleted);
   }
 }
 
